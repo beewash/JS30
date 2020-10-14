@@ -9,7 +9,10 @@
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const dogs = [
+      { name: 'Snickers', age: 2 }, 
+      { name: 'hugo', age: 8 }
+    ];
 
     function makeGreen() {
       const p = document.querySelector('p');
@@ -18,29 +21,55 @@
     }
 
     // Regular
+    console.log('Hello');
 
     // Interpolated
+    console.log('I am a %s string!', '💩');
 
     // Styled
+    console.log('%c I am a string!', 'font-size: 20px; background: red; text-shadow: 10px 10px 0 blue');
 
     // warning!
+    console.warn('Oh Nooo!');
 
     // Error :|
+    console.error('Shit!');
 
     // Info
+    console.info('I ran 2.16 miles on 10/14/20');
 
     // Testing
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'That is wrong');
 
     // clearing
+    console.clear() // clears everything in the console prior to clear being called
 
     // Viewing DOM Elements
+    console.dir(p); // allows you to open an element's properties and methods
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}.`);
+      console.log(`They are ${dog.age} years old.`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
+    console.count('break');
+    console.count('break');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/beewash')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
 
+    console.table(dogs);
   </script>
 </body>
 </html>
