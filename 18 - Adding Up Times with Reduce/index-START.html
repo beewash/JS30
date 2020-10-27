@@ -182,6 +182,30 @@
     </li>
   </ul>
 <script>
+  // need to wrap in brackets to create an array
+  // without brackets it is just a nodelist, which does not accept the .map() method
+  const timeNodes = [...document.querySelectorAll('[data-time]')];
+
+  const seconds = timeNodes
+    .map(node => node.dataset.time)
+    .map(timeCode => {
+      // parseFloat returns split items into integers
+      const [mins, secs] = timeCode.split(':').map(parseFloat);
+      return (mins * 60) + secs;
+    })
+    .reduce((total, vidSeconds) => total + vidSeconds);
+
+    let secondsLeft = seconds;
+    const hours = Math.floor(secondsLeft / 3600);
+    secondsLeft = secondsLeft % 3600; // '%' (mod) returns the last whole remaining number 
+    
+    const mins = Math.floor(secondsLeft / 60);
+    secondsLeft = secondsLeft % 60; // '%' (mod) returns the last whole remaining number 
+    console.log(hours, mins, secondsLeft);
+
+
+
+
 </script>
 </body>
 </html>
