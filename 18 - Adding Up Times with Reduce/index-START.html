@@ -183,7 +183,7 @@
   </ul>
 <script>
   // need to wrap in brackets to create an array
-  // without brackets it is just a nodelist, which does not accept the .map() method
+  // without brackets it is just a node list, which does not accept the .map() method
   const timeNodes = [...document.querySelectorAll('[data-time]')];
 
   const seconds = timeNodes
@@ -200,9 +200,9 @@
     secondsLeft = secondsLeft % 3600; // '%' (mod) returns the last whole remaining number 
     
     const mins = Math.floor(secondsLeft / 60);
-    secondsLeft = secondsLeft % 60; // '%' (mod) returns the last whole remaining number 
+    secondsLeft = secondsLeft % 60; // '%' (mod) returns the last whole remaining number !
     console.log(hours, mins, secondsLeft);
-
+ 
 
 
 
